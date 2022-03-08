@@ -1,4 +1,4 @@
-module protocol
+module github.com/Jaswit/protocol
 
 go 1.17
 
