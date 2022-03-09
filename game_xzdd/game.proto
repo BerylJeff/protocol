@@ -1,0 +1,77 @@
+syntax ="proto3";
+
+option go_package="./game_xzdd";
+
+package game_xzdd;
+
+message ReadyRequest{
+    int32 ready=1;      // 准备消息 1 准备  2 取消准备
+}
+
+message ReadyResponse{
+    int32 ready=1;      // 准备消息 1 准备  2 取消准备
+    int32 siteId =2;
+}
+// 开局消息
+message StartGame{
+    int32 zhuang=1;
+    repeated int32 sezi=2;
+}
+// 发手牌
+message FaiPai{
+    repeated int32 pai=1;
+}
+
+// 定缺
+message DingQueRequest{
+    int32 que =1;
+}
+
+message DingQueResponse{
+    int32 que =1;
+    int32 siteId =2;
+}
+
+// 摸牌
+message PlayerMoPai{
+    int32 siteId=1;
+    int32 pai =2;
+}
+
+message UserOptRequest{
+    int32 opt =2;
+    int32 pai =3;
+}
+
+message UserOptResponse{
+    int32 siteId=1;
+    int32 opt =2;
+    int32 pai =3;
+}
+
+// 玩家可以有的操作
+message PlayerOpt{
+    int32 siteId=1;
+    repeated int32 opt =2;
+}
+
+// 结算信息
+message UserSettleAccount{
+    int32 siteId = 1;
+    int32 isHu = 2;
+    int32 isDianPao = 3;
+    int32 huType = 4;
+    int32 dianPaoType = 5;
+    int32 huPai = 6;
+    int32 huFan = 7;
+    int32 gangFan = 8;
+    int32 total  =9;
+}
+
+// 游戏结束
+message GameOver{
+    int32 overType=1;
+    repeated int32 deskStat =2;
+    int32 deskStake =3; //桌子底注    
+    repeated UserSettleAccount userTotal = 4;  
+}
