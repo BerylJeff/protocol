@@ -4,7 +4,7 @@
 // 	protoc        v3.19.4
 // source: game_xzdd/game.proto
 
-package game_xzdd
+package xzdd
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

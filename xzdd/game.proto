@@ -1,8 +1,8 @@
 syntax ="proto3";
 
-option go_package="./game_xzdd";
+option go_package="./xzdd";
 
-package game_xzdd;
+package xzdd;
 
 message ReadyRequest{
     int32 ready=1;      // 准备消息 1 准备  2 取消准备
