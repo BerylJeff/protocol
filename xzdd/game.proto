@@ -4,6 +4,17 @@ option go_package="./xzdd";
 
 package xzdd;
 
+enum MsgId {
+    MSG_0 = 0;
+    READ = 4001;
+    START_GAME = 4002 ;
+    FAI_PAI = 4003;
+    QUE = 4004;
+    USER_OPT = 4005;
+    CAN_OPT = 4006;
+    GAME_OVER = 4007;
+}
+
 message ReadyRequest{
     int32 ready=1;      // 准备消息 1 准备  2 取消准备
 }
@@ -50,7 +61,7 @@ message UserOptResponse{
 }
 
 // 玩家可以有的操作
-message PlayerOpt{
+message PlayerCanOpt{
     int32 siteId=1;
     repeated int32 opt =2;
 }
