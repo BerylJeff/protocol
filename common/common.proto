@@ -1,0 +1,22 @@
+syntax ="proto3";
+
+option go_package="./common";
+
+package common;
+
+
+
+enum MsgId {
+  MSG_0 = 0;
+  CREATE_ROOM = 2001;
+  JOIN_ROOM = 2002 ;
+  LEVE_ROOM = 2003;
+  DIS_ROOM = 2004;
+}
+
+message CommonMsg{
+  int32 code = 1;
+  string msg = 2;
+  MsgId MsgId = 3;
+  bytes data =4;
+}
