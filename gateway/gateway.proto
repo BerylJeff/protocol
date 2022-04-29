@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option go_package = "./gateway";
+
+package gateway;
+
+message ConnDevRequest{
+  int64  userRequestId = 1;
+  int64  ipDevId = 2;
+  string gatewayAddr = 3;
+}
+
+message ConnDevResponse{
+  int64 userRequestId = 1;
+  string proxyAddr = 2;
+}
+
+message RemoteConnRequest{
+  int64 s5ConnCid = 1;
+  string addr = 2;
+}
+
+message RemoteConnResponse{
+  int64 s5ConnCid = 1;
+  int64 remoteConnCid = 2;
+}
+
+message RemoteDataRequest{
+  int64 remoteConnCid = 1;
+  bytes data = 2;
+}
+
+message RemoteDataResponse{
+  int64 s5ConnCid = 1;
+  bytes data = 2;
+}
