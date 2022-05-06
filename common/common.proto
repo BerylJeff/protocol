@@ -13,6 +13,10 @@ enum MsgId {
   LEVE_ROOM = 2003;
   DIS_ROOM = 2004;
 
+  MSG_DEV_FIND_Q = 300;  //来自各种协议连接
+  MSG_DEV_FIND_A = 301;
+  MSG_DEV_LOGIN_Q = 302;  //来自各种协议连接
+  MSG_DEV_LOGIN_A = 303;
   MSG_CONNECT_DEV_Q = 400;  //来自各种协议连接
   MSG_CONNECT_DEV_A = 401;
   MSG_CONNECT_SERVER_Q = 402;

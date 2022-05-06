@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "./loginwebsvr";
+
+package loginwebsvr;
+
+message FindSvrRequest{
+  string devId=1;
+  string channel=2;
+}
+
+message FindSvrResponse{
+  string devId=1;
+  string channel=2;
+}
+
+message LoginSvrRequest{
+  string devId=1;
+  string channel=2;
+}
+
+message LoginSvrResponse{
+  string devId=1;
+  string channel=2;
+}
