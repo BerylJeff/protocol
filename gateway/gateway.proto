@@ -20,18 +20,20 @@ message IpInfo{
 
 message GetIpResponse{
   int64  userRequestId = 1;
-  repeated IpInfo ipList = 2;
+  IpInfo ipList = 2;
 }
 
 
 message ConnDevRequest{
   int64  userRequestId = 1;
-  string gatewayAddr = 2;
+  int64 GetIpCid = 2;
+  string gatewayAddr = 3;
 }
 
 message ConnDevResponse{
   int64 userRequestId = 1;
-  string proxyAddr = 2;
+  int64 GetIpCid = 2;
+  string proxyAddr = 3;
 }
 
 message RemoteConnRequest{
