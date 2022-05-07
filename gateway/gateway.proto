@@ -6,7 +6,7 @@ package gateway;
 
 message ConnDevRequest{
   int64  userRequestId = 1;
-  int64  ipDevId = 2;
+  string  ipDevId = 2;
   string gatewayAddr = 3;
 }
 
