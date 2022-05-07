@@ -4,10 +4,29 @@ option go_package = "./gateway";
 
 package gateway;
 
+message GetIpRequest{
+  int64  userRequestId = 1;
+  repeated string ipDevId = 2;
+}
+
+message IpInfo{
+  int64 proxyIp = 1;
+  int32 proxyPort = 2;
+  string username = 3;
+  string password = 4;
+  int32  province = 5;
+  int32  city = 6;
+}
+
+message GetIpResponse{
+  int64  userRequestId = 1;
+  repeated IpInfo ipList = 2;
+}
+
+
 message ConnDevRequest{
   int64  userRequestId = 1;
-  string  ipDevId = 2;
-  string gatewayAddr = 3;
+  string gatewayAddr = 2;
 }
 
 message ConnDevResponse{
