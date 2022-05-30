@@ -20,7 +20,7 @@ message IpInfo{
 
 message GetIpResponse{
   int64  userRequestId = 1;
-  IpInfo ipList = 2;
+  IpInfo ipInfo = 2;
 }
 
 
@@ -54,4 +54,13 @@ message RemoteDataRequest{
 message RemoteDataResponse{
   int64 s5ConnCid = 1;
   bytes data = 2;
+}
+
+message RemoteCloseRequest{
+  int64 s5ConnCid = 1;
+  int64 remoteConnCid = 2;
+}
+
+message RemoteCloseResponse{
+  int32 status=1;
 }
