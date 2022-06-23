@@ -1,0 +1,55 @@
+syntax="proto3";
+
+option go_package = "futures_data";
+
+package futures_data;
+
+service FuturesData{
+  rpc GetServiceConfig(ServiceConfigReq)returns(ServiceConfigReply){}
+  rpc SaveTradeData(TradeDataReq)returns(TradeDataReply){}
+}
+
+
+message ServiceConfigReq{
+  string  quoteAddr = 1;
+  string	tradeAddr= 2;
+  string	authCode= 3;
+  string	appid= 4;
+  string	broker= 5;
+  string	user= 6;
+  string	pw= 7;
+  int32	  id= 8;
+}
+
+message ServiceConfigReply{
+  string msg =1;
+}
+
+
+message TradeDataReq{
+  ///合约代码
+  string	InstrumentID =1;
+  ///报单引用
+  string	OrderRef =2;
+  ///用户代码
+  string	ExchangeID=3;
+  ///成交编号
+  string	TradeID=4;
+  ///买卖方向
+  bytes 	Direction=5;
+  ///报单编号
+  string	OrderSysID=6;
+  ///开平标志
+  string	OffsetFlag=7;
+  ///价格
+  double	Price=8;
+  ///数量
+  int32	Volume=9;
+  ///成交时间
+  string	TradeTime=10;
+
+}
+
+message TradeDataReply{
+  string msg =1;
+}

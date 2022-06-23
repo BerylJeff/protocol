@@ -1,0 +1,105 @@
+syntax="proto3";
+
+option go_package = "futures_trade";
+
+package futures_trade;
+
+service FuturesTrade {
+  rpc ServiceLogin(LoginReq) returns (LoginReply) {}
+  rpc ServiceLogout(LogoutReq) returns (LogoutReply) {}
+  rpc QueryOrder(QueryOrderReq) returns (QueryOrderReply) {}
+  rpc CreateOrder(CreateOrderReq) returns (CreateOrderReply) {}
+  rpc UpdateOrder(UpdateOrderReq) returns (UpdateOrderReply) {}
+  rpc RemoveOrder(RemoveOrderReq) returns (RemoveOrderReply) {}
+  rpc StrategyUpdate(StrategyUpdateReq) returns (StrategyUpdateReply) {}
+}
+
+message OrderInfo{
+  string stockId =1;            // 股票 ID
+  int32  quantity=2;            // 数量
+  string strategyId=3;          // 策略ID
+}
+
+message LoginReq{
+    string  quoteAddr = 1;
+    string	tradeAddr= 2;
+    string	authCode= 3;
+    string	appid= 4;
+    string	broker= 5;
+    string	user= 6;
+    string	pw= 7;
+    int32	  id= 8;
+    repeated OrderInfo orderList=9;
+}
+
+message LoginReply{
+   string msg =1;
+}
+
+message LogoutReq{
+  int32  stopType = 1;
+  string stockId = 2;
+  string	user= 3;
+}
+
+message LogoutReply{
+  string msg =1;
+}
+
+message QueryOrderReq{
+  repeated string stockIdList =1;            // 股票 ID
+}
+
+message OrderTradingInfo{
+  string stockId =1;            // 股票 ID
+  int32  quantity=2;            // 数量
+  string strategyId=3;          // 策略ID
+  int32  positionQuantity=4;    // 订单持仓个数  每次更新持仓时设置
+  int32  direction=5;           // 平仓方向
+  double avgBuyPrice=6;         // 购买均价
+  double positionProfit=7;      // 持仓盈利
+}
+
+message QueryOrderReply{
+  repeated OrderTradingInfo orderTradingList =1;
+}
+
+message CreateOrderReq{
+  string stockId =1;            // 股票 ID
+  int32  quantity=2;            // 数量
+  string strategyId=3;          // 策略ID
+}
+
+message CreateOrderReply{
+  string msg =1;
+}
+
+message UpdateOrderReq{
+  string stockId =1;            // 股票 ID
+  int32  quantity=2;            // 数量
+  string strategyId=3;          // 策略ID
+}
+
+message UpdateOrderReply{
+  string msg =1;
+}
+message RemoveOrderReq{
+  string stockId =1;            // 股票 ID
+  string tradeDate = 2;
+}
+
+message RemoveOrderReply{
+  string msg =1;
+}
+
+message StrategyUpdateReq{
+  string stockId =1;
+  string strategyId = 2;
+  string	strategyInfo = 3;
+}
+
+message StrategyUpdateReply{
+  string msg =1;
+}
+
+
