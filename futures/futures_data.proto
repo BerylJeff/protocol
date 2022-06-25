@@ -1,30 +1,26 @@
 syntax="proto3";
 
-option go_package = "futures_data";
+option go_package = "./futures_data";
 
 package futures_data;
 
 service FuturesData{
-  rpc GetServiceConfig(ServiceConfigReq)returns(ServiceConfigReply){}
+  rpc GetOrderConfig(OrderConfigReq)returns(OrderConfigReply){}
   rpc SaveTradeData(TradeDataReq)returns(TradeDataReply){}
 }
 
-
-message ServiceConfigReq{
-  string  quoteAddr = 1;
-  string	tradeAddr= 2;
-  string	authCode= 3;
-  string	appid= 4;
-  string	broker= 5;
-  string	user= 6;
-  string	pw= 7;
-  int32	  id= 8;
+message OrderInfo{
+  string stockId =1;            // 股票 ID
+  int32  quantity=2;            // 数量
+  string strategyId=3;          // 策略ID
 }
 
-message ServiceConfigReply{
-  string msg =1;
+message OrderConfigReq{
 }
 
+message OrderConfigReply{
+  repeated OrderInfo orderList=1;
+}
 
 message TradeDataReq{
   ///合约代码
@@ -36,7 +32,7 @@ message TradeDataReq{
   ///成交编号
   string	TradeID=4;
   ///买卖方向
-  bytes 	Direction=5;
+  string 	Direction=5;
   ///报单编号
   string	OrderSysID=6;
   ///开平标志
@@ -47,7 +43,10 @@ message TradeDataReq{
   int32	Volume=9;
   ///成交时间
   string	TradeTime=10;
-
+  // 平均买入价
+  double	openPrice=11;
+  //
+  string	strategyId=12;
 }
 
 message TradeDataReply{
